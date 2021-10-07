@@ -23,9 +23,11 @@ function ProfilePage() {
 
   useEffect(
     () => {
-      axios.get(API_URL + "/user/" + userId).then((response) => {
-        console.log("response: ", response);
-        setUserInfo(response);
+      axios
+      .get(`${API_URL}/user/${userId}`)
+        .then((response) => {
+          console.log("response: ", response);
+          setUserInfo(response);
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +45,6 @@ function ProfilePage() {
     setShowLocationForm(!showLocationForm);
   };
 
-  console.log('useeeeeeer INFooofofoffofo:', userInfo)
 
   if (userInfo) {
     return (
@@ -71,7 +72,7 @@ function ProfilePage() {
             </div>
             <Favorites userInfo={userInfo} />
           <div className="user-products-container">
-          <UserTransactions />
+          <UserTransactions userInfo={userInfo}/>
           </div>
           
 
