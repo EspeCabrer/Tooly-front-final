@@ -11,10 +11,10 @@ const UserTransactions = (props) => {
   useEffect(() => {
     axios.get(API_URL + "/transaction/profile/" + userId).then((response) => {
       setTransactions(response.data);
-      console.log("transaction: ", response.data);
-    });
+/*       console.log("TRANSACTIONS ID: ", transactions[0].product._id);
+ */    });
   }, []);
-
+ 
   return (
     <div>
       <h3 className="profile-titles">My Transactions:</h3>
@@ -27,7 +27,7 @@ const UserTransactions = (props) => {
             </p>
             <p>Owner: {transaction.owner.username}</p>
             <p>Renter: {transaction.renter.username}</p>
-            <ReviewForm productId={transaction.product._id} />
+            <ReviewForm productId={transaction.product._id} userInfo={userId}/>
           </div>
         ))}
       </div>

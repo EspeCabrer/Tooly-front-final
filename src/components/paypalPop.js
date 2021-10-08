@@ -4,38 +4,51 @@
 import { PayPalButton } from "react-paypal-button-v2"
 import axios from "axios"
 import { useHistory } from "react-router"
+import {useEffect, useState, useContext} from "react"
+import { AuthContext } from "../context/auth.context";
 
 
 const API_URL = process.env.REACT_APP_API_URL
 
-
-
-
 const PaypalPop = (props) =>{
-
+  const { user } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState("");
  const {price, product, endDate, startDate, excludedDays} = props
  const history = useHistory()
 
- console.log("ecluded days in paypal",excludedDays)
+ let userId = user._id;
+
 const ProductDetails ={
     product,
     endDate,
     startDate,
-    excludedDays
+    excludedDays,
+    userId
 }
 
+
+
+useEffect(
+  () => {
+    axios
+    .get(`${API_URL}/user/${userId}`)
+      .then((response) => {
+        console.log("response: ", response);
+        setUserInfo(response);
+    });
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  []
+);
 
 const createTransaction = ()=>{
-    const storedToken = localStorage.getItem('authToken');
     
-
-
-    console.log("Create transaction")
-axios.post(API_URL + "/transaction", ProductDetails,   { headers: { Authorization: `Bearer ${storedToken}` } }  )
-.then(history.push("/profile"))
+axios
+.post(API_URL + "/transaction", ProductDetails  )
+.then(response => {
+  console.log ("***************RESPONES : ", response.data)
+  history.push("/")})
 }
-
-
     return(
     <div>
          <PayPalButton
@@ -48,16 +61,14 @@ axios.post(API_URL + "/transaction", ProductDetails,   { headers: { Authorizatio
         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
         onSuccess={(details, data) => {
           createTransaction()
-          alert("Transaction completed by " + details.payer.name.given_name);
-
           
           // OPTIONAL: Call your server to save the transaction
-          return fetch("/transaction", {
+          return (fetch(API_URL+"/tortuga", {
             method: "post",
             body: JSON.stringify({
-              orderID: data.orderID
             })
-          });
+            .then (response => console.log ("RESPONSE DE FETCH Y YA ESTA: ", response))
+          }));
         }}
       />
     </div>

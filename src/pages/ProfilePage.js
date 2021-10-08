@@ -16,7 +16,7 @@ function ProfilePage() {
   const [userInfo, setUserInfo] = useState("");
   const [showLocationForm, setShowLocationForm] = useState(false);
   let API_URL = process.env.REACT_APP_API_URL;
-
+ 
   let userId = user._id;
 
 	const { logOutUser } = useContext(AuthContext);
