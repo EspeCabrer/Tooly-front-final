@@ -16,7 +16,7 @@ function Favorites(props) {
 
       <div className="user-product-cards">
         {favorites.map((favorite) => (
-          <div>
+          <div key={favorite._id}>
             <div className="user-fav-card" key={favorite._id}>
               <div className="user-product-photo">
                 <Image

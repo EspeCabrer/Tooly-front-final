@@ -51,10 +51,7 @@ function ReviewCard(props) {
 	if (reviewInfo) {
 
 	return (
-
 		
-
-
 		<div className="review-card">
 		<div className="review-photo">
 		<img src= {reviewInfo.user.profileImg} alt="Review person"></img>
@@ -71,8 +68,13 @@ function ReviewCard(props) {
 	);
   } else {
 	  return (
-		  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-	  )
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 
 }

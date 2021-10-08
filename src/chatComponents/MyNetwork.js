@@ -90,33 +90,37 @@ class MyNetwork extends React.Component {
    render() {
 	const { currentUser } = this.state;
 	return (
-		<div className="users">
-			<div className="current-user-container">
-				{currentUser &&
-					<div>
-						<div className="current-user-info">
-							<h3>{currentUser.name}</h3>
-						</div>
-					</div>
-				}
-			</div>
-                {this.state.isLoading ? null :
-				 <div className="users-container"> 
-     
-                        { this.otherUsers.map(user => 
-                         <>
-                              <ChatContactCard className="user" user={user} key={user.id} />
-                                  <div className="user-action">
-        							 <button onClick={(userId) => this.handleClick(user._id)}>Message</button>
-      							</div>
-                         </>
-                        )}
-					<div className="chatbox-container" ref={c => this.container = c}>
-						<div id="talkjs-container" style={{height: "300px"}}><i></i></div>
-					</div>
-				</div>}
+    <div className="users">
+      <div className="current-user-container">
+        {currentUser && (
+          <div>
+            <div className="current-user-info">
+              <h3>{currentUser.name}</h3>
             </div>
-        )
+          </div>
+        )}
+      </div>
+      {this.state.isLoading ? null : (
+        <div className="users-container">
+          {this.otherUsers.map((user) => (
+            <div key={user._id}>
+              <ChatContactCard className="user" user={user} />
+              <div className="user-action">
+                <button onClick={(userId) => this.handleClick(user._id)}>
+                  Message
+                </button>
+              </div>
+            </div>
+          ))}
+          <div className="chatbox-container" ref={(c) => (this.container = c)}>
+            <div id="talkjs-container" style={{ height: "300px" }}>
+              <i></i>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
     }
 }
 

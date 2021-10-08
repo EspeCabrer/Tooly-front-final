@@ -100,7 +100,6 @@ function ProductDetailsPage(props) {
             <OwnerCard owner={product.owner} />
           </div>
           <div className="Map">
-            {/* {showMap ? <button onClick={handleShowMap}>Hide Map</button> : <button onClick={handleShowMap}>Show Location</button>} */}
             {isLoad && (
               <GoogleMap
                 className="google-map"
@@ -110,7 +109,7 @@ function ProductDetailsPage(props) {
             )}
 
             {!isLoad && (
-              <div class="lds-ring">
+              <div className="lds-ring">
                 <div></div>
                 <div></div>
                 <div></div>

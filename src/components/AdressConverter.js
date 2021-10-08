@@ -71,7 +71,7 @@ function AdressConverter(props) {
   return (
     <div>
       {showForm && (
-        <div clssName="new-location-form">
+        <div className="new-location-form">
           <form className="new-location-form-text" onSubmit={handleSubmit}>
             <label>Street:</label>
             <input
@@ -101,7 +101,7 @@ function AdressConverter(props) {
               value={city}
               onChange={handleCity}
             ></input>
-            <button type="submit" class="location-button">Check Location</button>
+            <button type="submit" className="location-button">Check Location</button>
           </form>
           {showMap && (
             <div className="google-map">

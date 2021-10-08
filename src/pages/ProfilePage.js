@@ -61,7 +61,7 @@ function ProfilePage() {
          <h3 className="profile-titles">Current location:</h3>
          <h2>{userInfo.data.address.street}, {userInfo.data.address.number}, {userInfo.data.address.postalCode}, {userInfo.data.address.city}.</h2>
          {!showLocationForm && (
-            <button onClick={handleShow} class="location-big-button">Choose Location</button>
+            <button onClick={handleShow} className="location-big-button">Choose Location</button>
           )}
           {showLocationForm && (
             <AdressConverter id={userId} close={handleUnshow} />

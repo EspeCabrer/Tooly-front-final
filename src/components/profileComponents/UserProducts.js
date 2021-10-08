@@ -36,7 +36,7 @@ function UserProduct(props) {
 
       <div className="user-product-cards">
         {products.map((product) => (
-          <div>
+          <div key={product._id}>
             <div className="user-product-card" key={product._id}>
               <div className="user-product-photo">
                 <Image
@@ -45,10 +45,6 @@ function UserProduct(props) {
                   publicId={product.photo}
                 />
               </div>
-
-              {/*  <div className="user-product-text">
-                <p>{product.name}</p>
-                </div> */}
               <div className="user-product-button">
                 <button
                   className="user-product-button-view"
@@ -64,9 +60,6 @@ function UserProduct(props) {
                 </button>
               </div>
             </div>
-
-            {/* {showEditor && <EditProduct product={product} />}
-                {showEditor? <button onClick={handleClick}>Save</button>:<button onClick={handleClick}>Edit Product</button>} */}
             {showPopup && (
               <div className="popup-delete">
                 <p>Are you sure you want to delete {product.name}?</p>

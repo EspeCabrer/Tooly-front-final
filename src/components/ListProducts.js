@@ -8,15 +8,11 @@ import ProductCard from './ProductCard'
 if (products.length > 0) {
 
   return (
-    <>
        <div className="cards-container">
-        {productsToShow.map((product) => (
-          <>
+        {productsToShow.map((product) => (     
           <ProductCard key={product._id} product={product}/>
-          </>
         ))}      
       </div>
-    </>
   );
 } else if (products.length === 0){
 
@@ -27,10 +23,14 @@ if (products.length > 0) {
   )
 
   } else { 
-    
     return (
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-    )
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   }
 }
 
