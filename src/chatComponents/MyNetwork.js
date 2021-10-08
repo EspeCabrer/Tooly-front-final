@@ -28,12 +28,13 @@ class MyNetwork extends React.Component {
 		.get (API_URL+`/chat/${currentUserId}`)
 		.then((response) => {
 			let transactions = response.data
+			console.log ("CHAT TRANS: ", transactions)
 			let usersInvolved = []
 			for (let i=0; i<transactions.length; i++){
-				if (transactions[i].owner === currentUserId){
-					console.log (transactions[i].renter+" = "+currentUserId)
+				if (transactions[i].owner._id === currentUserId){
+					console.log (transactions[i].renter._id+" = "+currentUserId)
 					usersInvolved.push(transactions[i].renter)
-				} else if (transactions[i].renter === currentUserId) {
+				} else if (transactions[i].renter._id === currentUserId) {
 					usersInvolved.push(transactions[i].owner)
 				}
 			}
@@ -50,9 +51,7 @@ class MyNetwork extends React.Component {
 				}
 				repeated = false;
 			}
-			console.log("UNIQUE: ", uniqueUsers)
 			this.otherUsers = [...uniqueUsers] 
-			console.log ("OTHERUSERS:", this.otherUsers)
 			this.setState ({...this.state, isLoading: false})
 		})
    }

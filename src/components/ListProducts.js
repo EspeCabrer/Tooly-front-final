@@ -3,15 +3,12 @@ import ProductCard from './ProductCard'
   function ListProducts(props) {
 
   const {products} = props;
-  console.log ("LISTPRODUCTs: ", products)  
   let productsToShow = products
-  console.log ("ListProducts product array is: ", productsToShow)
   
 if (products.length > 0) {
 
   return (
     <>
-       {/* <Filter setProductsByFilter={setProducts} products={products} /> */}
        <div className="cards-container">
         {productsToShow.map((product) => (
           <>
@@ -25,7 +22,7 @@ if (products.length > 0) {
 
   return (
     <div className="not-found">
-    <img src="./no-results.png"/>
+    <img src="./no-results.png" alt="no results" />
     </div>
   )
 

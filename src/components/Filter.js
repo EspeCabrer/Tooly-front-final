@@ -93,7 +93,8 @@ function Filter(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="filter-container" onSubmit={handleSubmit}>
+      <div>
       <label>Category:</label>
       <select value={searchByCategory} onChange={handleCategory}>
         <option value="assembly">Assembly Tools</option>
@@ -107,6 +108,8 @@ function Filter(props) {
         <option value="stairs">Stairs</option>
         <option value="industrial">Industrial Tools</option>
       </select>
+      </div>
+      <div className="filter-div">
       <label>Price:</label>
       <input
         type="range"
@@ -136,6 +139,8 @@ function Filter(props) {
         <option value="120">120</option>
         <option value="550">550</option>
       </datalist>
+      </div>
+        <div className="filter-div">
       <label>Rating:</label>
       <input
         type="range"
@@ -154,7 +159,9 @@ function Filter(props) {
         <option value="4">4</option>
         <option value="5">5</option>
       </datalist>
-
+      </div>
+        <div className="filter-div">
+        <label>Distance:</label>
       <input
         type="range"
         min="1"
@@ -172,6 +179,7 @@ function Filter(props) {
         <option value="10">10km</option>
         <option value="50">50km</option>
       </datalist>
+      </div>
       <button type="submit">Filter</button>
     </form>
   );

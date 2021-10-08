@@ -43,6 +43,7 @@ function ProfilePage() {
     e.preventDefault();
 
     setShowLocationForm(!showLocationForm);
+    window.location.reload()
   };
 
 
