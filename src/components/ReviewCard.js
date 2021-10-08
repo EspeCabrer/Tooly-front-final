@@ -43,6 +43,8 @@ function ReviewCard(props) {
 			break;
 			case 5:
 			rate = stars5
+			break;
+			default:rate = stars0
 	}
 
 
@@ -59,7 +61,7 @@ function ReviewCard(props) {
 		</div>
 		<div className="review-text">
 		<div>
-		<img src={rate}/>
+		<img src={rate} alt="rating"/>
 		</div>
 		<h4>{reviewInfo.user.username}:</h4>
 		<p>{review.content}</p>

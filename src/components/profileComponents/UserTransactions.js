@@ -11,8 +11,8 @@ const UserTransactions = (props) => {
   useEffect(() => {
     axios.get(API_URL + "/transaction/profile/" + userId).then((response) => {
       setTransactions(response.data);
-/*       console.log("TRANSACTIONS ID: ", transactions[0].product._id);
- */    });
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
  
   return (

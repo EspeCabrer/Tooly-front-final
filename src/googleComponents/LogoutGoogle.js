@@ -10,7 +10,6 @@ function Logout() {
   
 
   const onSuccess = (response) => {
-    console.log("Logged out")
     alert("Logged out")
   logOutUser()
   history.push("/")

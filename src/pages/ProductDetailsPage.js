@@ -22,8 +22,6 @@ function ProductDetailsPage(props) {
   const [lng, setLng] = useState("");
 
   const { id } = useParams();
-  console.log("id: ", id);
-  console.log("is fav??", isFav);
 
   const { user } = useContext(AuthContext);
   let API_URL = process.env.REACT_APP_API_URL;
@@ -52,7 +50,6 @@ function ProductDetailsPage(props) {
         setProduct(response.data.product);
         setOwner(response.data.user);
         setIsLoaded(true);
-        console.log("product encontrado: ", response.data);
         setLat(response.data.user.location.lat);
         setLng(response.data.user.location.lng);
         setIsLoad(true);

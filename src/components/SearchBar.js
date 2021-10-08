@@ -7,8 +7,6 @@ function SearchProduct(props) {
 
   const [searchLetters, setSearchLetters] = useState("");
 
-  console.log("typeof", typeof handleSearch)
-
   const handleSelect = (e) => {
     
     setSearchLetters(e.target.value);
@@ -18,7 +16,6 @@ function SearchProduct(props) {
     e.preventDefault();
     const API_URL = process.env.REACT_APP_API_URL;
     const productToSearch = searchLetters;
-    console.log ("looking for =>", productToSearch)
     axios
       .get (API_URL + "/product/search/"+productToSearch)
       .then (response => {

@@ -26,7 +26,6 @@ function ProfilePage() {
       axios
       .get(`${API_URL}/user/${userId}`)
         .then((response) => {
-          console.log("response: ", response);
           setUserInfo(response);
       });
     },

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import GoogleMap from "./GoogleMap";
 
@@ -27,11 +27,6 @@ function AdressConverter(props) {
     setCity(e.target.value);
   };
 
-  useEffect(() => {
-    console.log("dlat:", lat);
-    console.log("dlng:", lng);
-  }, [lat, lng]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,8 +38,6 @@ function AdressConverter(props) {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${searchStreet},+${number},+${postalCode},+${searchCity}&key=AIzaSyCO6vMEzrsXbc43qNmIEzbkTrV7nwhEf_Q`
       )
       .then((response) => {
-        console.log(response.data.results[0].geometry.location);
-
         setLat(response.data.results[0].geometry.location.lat);
         setLng(response.data.results[0].geometry.location.lng);
         setShowMap(true);
@@ -52,7 +45,6 @@ function AdressConverter(props) {
   };
 
   const handleSubmitCoords = (e) => {
-    console.log("holaaaaaaa");
     e.preventDefault();
     let requestBody = {
     location:{ lat: lat, lng: lng },
@@ -65,12 +57,9 @@ function AdressConverter(props) {
     }
 
     
-    console.log("object to submit:", requestBody);
-
     axios
       .put(API_URL + `/user/${props.id}`, requestBody)
-      .then((response) => {
-        console.log("this is your location:", response);
+      .then((response) => { return ("ok")
       })
       .catch((err) => {
         console.log("Error:", err);

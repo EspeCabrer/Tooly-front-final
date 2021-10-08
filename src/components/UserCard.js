@@ -10,7 +10,6 @@ function OwnerCard(props) {
   useEffect(
     () => {
       axios.get(API_URL + "/user/" + owner).then((response) => {
-        console.log("responseOwner: ", response);
         setOwnerInfo(response.data);
       });
     },
@@ -18,12 +17,10 @@ function OwnerCard(props) {
     []
   );
 
-  console.log("this is the owner info:", ownerInfo);
-
   return (
     <div className="owner-card">
         <div className="picture-owner">
-          <img src={ownerInfo.profileImg} />
+          <img src={ownerInfo.profileImg} alt="Owner"/>
         </div>
         <div className="text-owner">
         <h3>Meet the owner</h3>

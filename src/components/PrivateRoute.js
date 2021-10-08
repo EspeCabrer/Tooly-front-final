@@ -8,7 +8,6 @@ function PrivateRoute(props) {
   const { path, exact,  component, ...restProps } = props;
   
   const { isLoggedIn, isLoading } = useContext(AuthContext);
-  console.log("isLoggedIn",isLoggedIn)
 
   // If the authentication is still loading ⏳
   if (isLoading) return <div class="lds-ring"><div></div><div></div><div></div><div></div></div>;
